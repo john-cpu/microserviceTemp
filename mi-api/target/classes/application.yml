@@ -1,0 +1,44 @@
+server:
+  port: 8081
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: root
+    password: root
+    virtual-host: my_vhost
+    publisher-confirms: true
+    publisher-returns: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        retry:
+          enabled: true #开启消费者重试
+          max-attempts: 5 #最多重试五次
+          max-interval: 5000 #重试间隔
+    template:
+      mandatory: true #Mandatory为true时,消息通过交换器无法匹配到队列会返回给生产者 为false时,匹配不到会直接被丢弃
+  profiles:
+    active: default
+  application:
+    name: mi-api
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: jdbc:mysql://localhost:3306/mobile
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update  # create-drop
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9002/eureka/

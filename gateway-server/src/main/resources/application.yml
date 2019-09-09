@@ -1,0 +1,22 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: gateway-server
+eureka:
+  instance:
+    instance-id: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9002/eureka/
+zuul:
+  host:
+    connect-timeout-millis: 6000
+    socket-timeout-millis: 6000
+  routes:
+    mi-controller:
+      sensitiveHeaders:
+      path: /mc/**
+      stripPrefix: true
+      serviceId: http://localhost:9501

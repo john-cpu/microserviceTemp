@@ -1,0 +1,16 @@
+# 启动前加载
+server:
+  port: 9501
+#  servlet:
+#    context-path: /mi-controller
+spring:
+  application:
+    name: mi-controller
+eureka:
+  client:
+    serviceUrl:
+      defaultZone:  http://localhost:9001/eureka/,http://localhost:9002/eureka/
+  instance:
+    prefer-ip-address: true
+logging:
+  path: d:\mymicroservice-log

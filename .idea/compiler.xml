@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mipersistence" />
+        <module name="miservice" />
+        <module name="miclient" />
+        <module name="micontroller" />
+        <module name="miapi" />
+        <module name="gateway-server" />
+        <module name="eurekaserver02" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="eureka-server01" target="1.8" />
+      <module name="eurekaserver01" target="1.8" />
+      <module name="gatewayserver" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="eurekaserver01" options="-parameters" />
+      <module name="eurekaserver02" options="-parameters" />
+      <module name="gateway-server" options="-parameters" />
+      <module name="miapi" options="-parameters" />
+      <module name="miclient" options="-parameters" />
+      <module name="micontroller" options="-parameters" />
+      <module name="mipersistence" options="-parameters" />
+      <module name="miservice" options="-parameters" />
+    </option>
+  </component>
+</project>

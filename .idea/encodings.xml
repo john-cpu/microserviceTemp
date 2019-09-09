@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server01" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/eureka-server02" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/gateway-server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mi-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mi-client" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mi-controller" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mi-persistence" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mi-service" charset="UTF-8" />
+  </component>
+</project>
