@@ -1,6 +1,12 @@
 server:
   port: 8081
 spring:
+  redis:
+    database: 0
+    timeout: 10000
+    host: 127.0.0.1
+    port: 6379
+    password:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
@@ -35,7 +41,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update  # create-drop
-    database-platform: org.hibernate.dialect.MySQL5Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #生成的数据表是Innodb类型
 eureka:
   instance:
     prefer-ip-address: true

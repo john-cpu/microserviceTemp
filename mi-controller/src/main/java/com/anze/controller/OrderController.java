@@ -18,10 +18,12 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/order")
+//@CrossOrigin(origins = "http://localhost:4200")可接收前端angular请求
 public class OrderController {
 
     @Autowired
     OrderClient orderClient;
+
     @GetMapping("getOrderById")
     public OrderDto getOrderById(@RequestParam("id")int id) {
         return orderClient.getOrderById(id);

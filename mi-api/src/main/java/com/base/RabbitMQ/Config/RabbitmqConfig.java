@@ -1,13 +1,9 @@
 package com.base.RabbitMQ.Config;
 
 import org.springframework.amqp.core.*;
-import org.springframework.amqp.rabbit.connection.CorrelationData;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -26,13 +22,15 @@ public class RabbitmqConfig {
     }
     @Bean
     public Binding binding(){
-        return BindingBuilder.bind(my_queue()).to(defaultChange()).with("hello").noargs();
+        return BindingBuilder.bind(my_queue()).to(defaultChange()).with("hello")/*.noargs()*/;
     }
     @Bean
-    CustomExchange defaultChange(){
+    TopicExchange defaultChange(){
         Map<String,Object> args = new HashMap<>();
         args.put("x-delayed-type","direct");
-        return new CustomExchange("my_exchange","x-delayed-message",true,false,args);
+        return new TopicExchange("my_exchange",true,false,args);
+        //return new DirectExchange("my_exchange",true,false,args);
+        //return new CustomExchange("my_exchange","x-delayed-message",true,false,args);
     }
 
 }

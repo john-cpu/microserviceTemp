@@ -1,19 +1,12 @@
 package com.base.RabbitMQ.Send;
 
-import com.alibaba.fastjson.JSONObject;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.amqp.core.Message;
-import org.springframework.amqp.core.MessageBuilder;
-import org.springframework.amqp.core.MessageProperties;
-import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.UUID;
+import java.util.*;
 
 /**
  * @author zhanghonglin
@@ -25,8 +18,8 @@ import java.util.UUID;
 public class Sender implements RabbitTemplate.ReturnCallback{
     /* @Autowired
         AmqpTemplate amqpTemplate;*///原本使用的模板
-   @Autowired
-   RabbitTemplate rabbitTemplate;
+    @Autowired
+    RabbitTemplate rabbitTemplate;
     public void send(Integer id){
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println("发送时间：" + sf.format(new Date()));
@@ -38,17 +31,11 @@ public class Sender implements RabbitTemplate.ReturnCallback{
                 System.out.println("HelloSender 消息发送成功 ");
             }
         });
-        /*rabbitTemplate.convertAndSend("my_exchange", "hello", id, message -> {
+        rabbitTemplate.convertAndSend("my_exchange", "hello", id, message -> {
             message.getMessageProperties().setHeader("x-delay", 60000);
+            message.getMessageProperties().setMessageId(UUID.randomUUID()+"");
             return message;
-        });*/
-        JSONObject jsonObject = new JSONObject();
-        String jsonString = jsonObject.toJSONString();
-        Message message = MessageBuilder.withBody(jsonString.getBytes()) .setContentType(MessageProperties.CONTENT_TYPE_JSON).setContentEncoding("utf-8")
-                .setMessageId(UUID.randomUUID() + "")
-                .setHeader("x-delay",6000).build();
-
-        rabbitTemplate.convertAndSend("mx-exchange","hello",id,message1 -> {return message;});
+        });
     }
 
     @Override
