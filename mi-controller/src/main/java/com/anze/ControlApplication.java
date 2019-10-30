@@ -20,4 +20,9 @@ public class ControlApplication {
     public static void main(String[] args) {
         SpringApplication.run(ControlApplication.class,args);
     }
+/*    @Bean
+    @LoadBalanced
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
+    }//2019-9-18*/
 }

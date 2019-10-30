@@ -24,7 +24,7 @@ public class Sender implements RabbitTemplate.ReturnCallback{
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         System.out.println("发送时间：" + sf.format(new Date()));
         this.rabbitTemplate.setReturnCallback(this);
-        this.rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {//确认消息到达Exchange
+        this.rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {//消息到达exchange即调用
             if (!ack) {
                 System.out.println("HelloSender消息发送失败" + cause + correlationData.toString());
             } else {
@@ -39,7 +39,7 @@ public class Sender implements RabbitTemplate.ReturnCallback{
     }
 
     @Override
-    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {//确认消息是否到达队列
+    public void returnedMessage(Message message, int replyCode, String replyText, String exchange, String routingKey) {//交换机投递消息到队列失败即会触发（延时队列 队列没有立即收到消息也会触发）
         System.out.println("消息主体 message : "+message);
         System.out.println("消息主体 message : "+replyCode);
         System.out.println("描述："+replyText);

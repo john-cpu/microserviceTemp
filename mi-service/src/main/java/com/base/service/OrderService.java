@@ -3,7 +3,6 @@ package com.base.service;
 import com.base.dto.OrderDto;
 import com.base.mt.domain.SaleOrder;
 import com.base.mt.repository.OrderRepository;
-import com.google.common.collect.Lists;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +36,7 @@ public class OrderService {
     }
 
     public List<OrderDto> getAll() {
-        List<SaleOrder> orders = Lists.newArrayList();//Collections.emptyList()
+        List<SaleOrder> orders = Collections.emptyList();
         try{
             orders= orderRepository.findAll();
         }catch (Exception e){

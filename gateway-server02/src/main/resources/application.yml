@@ -1,0 +1,33 @@
+server:
+  port: 9201
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: prefixpath_route
+          uri: lb://mi-controller/order/* #此处需要使用lb协议 loadbalancer
+          predicates:
+            - Path=/order/*
+#          filters:
+#            - StripPrefix=1  指定要去除的前缀的个数  请求/name/bar/foo，去除掉前面1个前缀之后，最后转发到目标服务的路径为bar//foo
+#            - PrefixPath=/user 请求/hello，最后转发到目标服务的路径变为/user/hello
+#            - name: Hystrix 需要引入Hystrix包依赖
+#                args:
+#                  name: authHystrixCommand
+#                  fallbackUri: forward:/hystrixTimeout 熔断时的跳转路径
+      discovery:
+        locator:
+          enabled: true #开启从注册中心动态创建路由的功能
+          lower-case-service-id: true #使用小写服务名，默认是大写
+eureka:
+  instance:
+    instance-id: localhost
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9002/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

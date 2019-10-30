@@ -11,6 +11,7 @@
         <module name="miclient" />
         <module name="micontroller" />
         <module name="miapi" />
+        <module name="gatewayserver02" />
         <module name="gateway-server" />
         <module name="eurekaserver02" />
       </profile>
@@ -26,6 +27,7 @@
       <module name="eurekaserver01" options="-parameters" />
       <module name="eurekaserver02" options="-parameters" />
       <module name="gateway-server" options="-parameters" />
+      <module name="gatewayserver02" options="-parameters" />
       <module name="miapi" options="-parameters" />
       <module name="miclient" options="-parameters" />
       <module name="micontroller" options="-parameters" />

@@ -23,6 +23,7 @@
         <module>mi-service</module>
         <module>gateway-server</module>
         <module>eureka-server02</module>
+        <module>gateway-server02</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -39,7 +40,6 @@
         <logback-core.version>1.2.3</logback-core.version>
         <mysql.version>5.1.42</mysql.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
-        <guava.version>20.0</guava.version>
     </properties>
     <dependencyManagement>
     <dependencies>
