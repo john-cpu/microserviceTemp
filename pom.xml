@@ -33,7 +33,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <spring-platform.version>Cairo-SR6</spring-platform.version>
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.16.18</lombok.version>
         <fastjson.version>1.2.48</fastjson.version>
